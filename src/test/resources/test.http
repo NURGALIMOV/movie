@@ -1,0 +1,26 @@
+###
+GET http://localhost:8080/
+
+###
+GET http://localhost:8080/films?offset=0&limit=1
+
+###
+GET http://localhost:8080/films/5608f5c0-042a-4efd-b6ca-70629df5bbf9
+
+###
+GET http://localhost:8080/collections
+
+###
+GET http://localhost:8080/collections/44faa85f-5fba-4913-bb91-3019ebc7a7e4
+
+###
+GET http://localhost:8080/genres
+
+###
+GET http://localhost:8080/genres/f1e8a1db-205c-48b7-b6bb-a28a8d8d3247
+
+###
+GET http://localhost:8080/companies
+
+###
+GET http://localhost:8080/companies/4df93262-5866-45cf-b849-facae4f39912
