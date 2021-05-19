@@ -1,0 +1,18 @@
+name: Build
+on:
+  push:
+    branches: [ master, main ]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the repo
+        uses: actions/checkout@v2
+      - name: Push to Docker hub
+        uses: docker/build-push-action@v1
+        with:
+          username: ${{ github.actor }}
+          password: ${{ secrets.DOCKER_TOKEN }}
+          registry: ghcr.io
+          repository: nurgalimov/movie
+          tag_with_ref: true
