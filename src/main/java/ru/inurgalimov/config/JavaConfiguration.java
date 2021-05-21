@@ -25,8 +25,8 @@ public class JavaConfiguration {
     }
 
     @Bean
-    public JdbcTemplate jdbcTemplate() throws NamingException {
-        return new JdbcTemplate(dataSource());
+    public JdbcTemplate jdbcTemplate(DataSource dataSource) {
+        return new JdbcTemplate(dataSource);
     }
 
 }
