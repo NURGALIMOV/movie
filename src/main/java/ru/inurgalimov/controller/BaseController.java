@@ -15,7 +15,7 @@ import ru.inurgalimov.service.*;
 import java.util.*;
 
 @RestController
-@RequestMapping("/")
+@RequestMapping(value = "/", produces = MediaType.APPLICATION_JSON_VALUE)
 @RequiredArgsConstructor
 public class BaseController {
 
@@ -26,48 +26,47 @@ public class BaseController {
     private final CompanyService companyService;
 
     @SneakyThrows
-    @PostMapping(value = "upload", consumes = MediaType.MULTIPART_FORM_DATA_VALUE,
-            produces = MediaType.APPLICATION_JSON_VALUE)
+    @PostMapping(value = "upload", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     public List<Pair<? extends Class<? extends Exception>, String>> upload(@RequestPart MultipartFile file) {
         return uploadService.upload(file);
     }
 
-    @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping
     public List<MovieDto> getTopTwentyFilms() {
         return movieService.getTopTwentyFilms();
     }
 
-    @GetMapping(value = "films", produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(value = "films")
     public List<MovieDto> getFilms(@RequestParam int offset, @RequestParam int limit) {
         return movieService.getAll(offset, limit);
     }
 
-    @GetMapping(value = "films/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(value = "films/{id}")
     public MovieDto getFilm(@PathVariable UUID id) {
         return movieService.getById(id);
     }
 
-    @GetMapping(value = "collections", produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(value = "collections")
     public List<CollectionDto> getCollections() {
         return collectionService.getAll();
     }
 
-    @GetMapping(value = "collections/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(value = "collections/{id}")
     public CollectionDto getCollection(@PathVariable UUID id) {
         return collectionService.getById(id);
     }
 
-    @GetMapping(value = "genres", produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(value = "genres")
     public List<GenreDto> getGenres() {
         return genreService.getAll();
     }
 
-    @GetMapping(value = "genres/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(value = "genres/{id}")
     public Collection<MovieDto> getGenre(@PathVariable UUID id) {
         return movieService.getTopTwentyFilmsByGenre(id);
     }
 
-    @GetMapping(value =  "companies", produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(value =  "companies")
     public List<CompanyDto> getCompanies() {
         return companyService.getAll();
     }
